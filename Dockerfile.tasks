@@ -1,0 +1,73 @@
+### BUILD
+FROM      python:3.9.6-alpine3.14
+
+WORKDIR   /var/app
+COPY      ./requirements.txt /var/app/requirements.txt
+
+RUN       apk add --no-cache bzip2-dev \
+    coreutils \
+    dpkg-dev dpkg \
+    expat-dev \
+    findutils \
+    gcc \
+    gdbm-dev \
+    libc-dev \
+    libffi-dev \
+    libnsl-dev \
+    libtirpc-dev \
+    linux-headers \
+    make \
+    ncurses-dev \
+    pax-utils \
+    readline-dev \
+    sqlite-dev \
+    tcl-dev \
+    tk \
+    tk-dev \
+    util-linux-dev \
+    xz-dev \
+    zlib-dev \
+    alpine-sdk \
+    postgresql-dev
+
+RUN       pip3 install -r /var/app/requirements.txt
+
+### RUNTIME
+FROM      alpine:3.14
+WORKDIR   /var/app
+COPY      --from=0 /usr/local /usr/local
+
+RUN       apk add --no-cache \
+    libbz2 \
+    expat \
+    libffi \
+    gdbm \
+    xz-libs \
+    ncurses-terminfo-base \
+    ncurses-terminfo \
+    ncurses-libs \
+    readline \
+    sqlite-libs \
+    xmlsec \
+    shadow \
+    bash \
+    libuuid \
+    libpq \
+    libstdc++ \
+    curl \
+    gzip \
+    ca-certificates
+
+ENV       TZ                "Etc/UTC"
+ENV       PATH              /usr/local/bin:$PATH
+ENV       PYTHONPATH        "${PYTONPATH}:/var/app"
+
+EXPOSE    8080
+
+RUN        useradd -M -s /sbin/nologin tasks
+
+COPY      . /var/app/
+
+STOPSIGNAL SIGINT
+USER      tasks
+CMD       /var/app/tasks-start.sh
