@@ -4,5 +4,4 @@ rq-scheduler
 pxapi>=0.3.1
 requests==2.23.0
 newrelic
-pxapi==0.3.1
 bleach>=4.1.0
