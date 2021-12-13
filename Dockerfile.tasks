@@ -28,7 +28,8 @@ RUN       apk add --no-cache bzip2-dev \
     xz-dev \
     zlib-dev \
     alpine-sdk \
-    postgresql-dev
+    postgresql-dev \
+    cargo
 
 RUN       pip3 install -r /var/app/requirements.txt
 
