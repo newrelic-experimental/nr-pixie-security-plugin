@@ -13,6 +13,7 @@ services:
       - ENVIRONMENT=development
       - REDIS_URL=redis://redis:6379
       - REDIS_QUEUE_CHECKIN_ENDPOINT=http://web:8080/healthcheck/worker-checkin
+      - NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY
       - NEW_RELIC_APP_NAME=pixie_plugin Tasks ($USER dev environment)
       - PIXIE_API_TOKEN=$PIXIE_API_TOKEN
       - PIXIE_CLUSTER_ID=$PIXIE_CLUSTER_ID
