@@ -16,10 +16,17 @@ export NR_ACCOUNT_ID=<New Relic account id>
 export PIXIE_API_TOKEN=<Pixie api token>
 export PIXIE_CLUSTER_ID=<Pixie cluster id>
 ``` 
+
+(Optional) If you would like to set up monitoring of the plugin with New Relic, save your license key to your environment:
+```
+export NEW_RELIC_LICENSE_KEY=<New Relic license key>
+```
+
 > 2. Run the project via Docker.
 ```bash
 docker-compose up -d
 ```
+Note that you may get a warning from the Docker container if you did not export your license key to the environment. The license key is not necessary for running the plugin.
 
 ## Support
 Because this project is an experimental proof of concept, we will not be maintaining this repo. However, we encourage you to discuss the project on our online forum.
