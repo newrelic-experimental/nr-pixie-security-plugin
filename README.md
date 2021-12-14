@@ -17,7 +17,7 @@ export PIXIE_API_TOKEN=<Pixie api token>
 export PIXIE_CLUSTER_ID=<Pixie cluster id>
 ``` 
 
-(Optional) If you would like to set up monitoring with New Relic, save your license key to your environment:
+(Optional) If you would like to set up monitoring of the plugin with New Relic, save your license key to your environment:
 ```
 export NEW_RELIC_LICENSE_KEY=<New Relic license key>
 ```
