@@ -105,7 +105,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### pxapi
 
-This product includes source derived from [pxapi](https://pypi.org/project/pxapi/)([v0.3.1])(https://pypi.org/project/pxapi/0.3.1/)), distributed under the [Apache Software License (Apache-2.0)](https://github.com/pixie-io/pixie/blob/main/LICENSE).
+This product includes source derived from [pxapi](https://pypi.org/project/pxapi/)([v0.3.1](https://pypi.org/project/pxapi/0.3.1/)), distributed under the [Apache Software License (Apache-2.0)](https://github.com/pixie-io/pixie/blob/main/LICENSE).
 
 ```
                                 Apache License
