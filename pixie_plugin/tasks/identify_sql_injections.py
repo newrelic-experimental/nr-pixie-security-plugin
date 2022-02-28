@@ -93,7 +93,7 @@ def _filter_data(sql_queries):
 
 
 def _identify_sql_injections(filtered_sql_queries):
-    """ Returns an array of dicts representing injection events. """
+    """Returns an array of dicts representing injection events."""
     sql_injections = []
     for query in filtered_sql_queries:
         for rule, regex in SQL_INJECTION_RULE_DICT.items():
@@ -123,12 +123,12 @@ def _create_injection_event(query_row, rule):
         "baseQueryType": _identify_base_query(query_row["req"]),
         "dangerWords": _identify_danger_words(query_row["req"]),
         "rule": rule,
-        "timestamp": query_row["time_"] / 10 ** 9,
+        "timestamp": query_row["time_"] / 10**9,
     }
 
 
 def _submit_nr_events(settings, events):
-    """ Submit array of custom events to NR using the Event API. """
+    """Submit array of custom events to NR using the Event API."""
     events_json = json.dumps(events)
     nr_key = settings["NR_INSERT_KEY"]
     nr_account_id = settings["NR_ACCOUNT_ID"]
@@ -143,7 +143,7 @@ def _submit_nr_events(settings, events):
     os.system(  # nosec
         f'gzip -c {temp_name} | curl -X POST -H "Content-Type: application/json" '
         f'-H "X-Insert-Key: {nr_key}" -H "Content-Encoding: gzip" '
-        f"https://staging-insights-collector.newrelic.com/v1/accounts/{nr_account_id}"
+        f"https://insights-collector.newrelic.com/v1/accounts/{nr_account_id}"
         f"/events --data-binary @-"
     )
     os.remove(temp_name)
@@ -163,7 +163,7 @@ def _filter_http_data(http_requests):
 
 
 def _identify_xss(http_requests):
-    """ Returns an array of dicts representing xss events. """
+    """Returns an array of dicts representing xss events."""
     xss_events = []
     for request in http_requests:
         parsed = parse.urlparse(request["req_path"])
@@ -177,7 +177,7 @@ def _identify_xss(http_requests):
                             "path": request["req_path"],
                             "body": request["req_body"],
                             "rule": "xss",
-                            "timestamp": request["time_"] / 10 ** 9,
+                            "timestamp": request["time_"] / 10**9,
                         }
                     )
                     logger.info(
