@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements.txt requirements.in
 #
-authlib==0.15.4
+authlib==1.1.0
     # via pxapi
 bleach==4.1.0
     # via -r requirements.in
