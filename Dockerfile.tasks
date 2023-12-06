@@ -39,7 +39,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 RUN       pip3 install -r /var/app/requirements.txt
 
 ### RUNTIME
-FROM      alpine:3.15
+FROM      alpine:latest
 WORKDIR   /var/app
 COPY      --from=0 /usr/local /usr/local
 
